@@ -96,7 +96,7 @@
 
         >
         <div>
-          Flip your phone to proove liveliness
+          Flip your phone to prove liveliness
           <div>
             <img width="300px" height="500px" src="images/double_flip.gif">
           </div>
@@ -181,7 +181,7 @@
               <button class="login btn" onclick="showModal()">Mint with Proof-of-Liveliness</button>
               <div class="error"></div>
               <div class="dialog"></div>
-              <h1 id="hello">HELLOO</h1>
+              <!-- <h1 id="hello">HELLOO</h1> -->
             </div>
             <div id="app" class="hidden"></div>
             <script>
@@ -245,13 +245,14 @@
         function showModal() {
           document.getElementById("qr-modal").classList.remove("hidden");
         }
-      let hello = document.getElementById("hello");
-      hello.addEventListener("click", () => {
-        // document.getElementById("minted-beer").classList.add("visible1");
-        // $("#qr-modal").modal("show");
-        document.getElementById("qr-modal").classList.remove("hidden");
-        console.log('clicked hello')
-      });
+      // let hello = document.getElementById("hello");
+      // hello.addEventListener("click", () => {
+      //   // document.getElementById("minted-beer").classList.add("visible1");
+      //   // $("#qr-modal").modal("show");
+      //   document.getElementById("qr-modal").classList.remove("hidden");
+      //   console.log('clicked hello')
+      // });
+      
               // Silent Auth config
               document.querySelector('.login')
                 .addEventListener('click', sl_auth);
@@ -294,7 +295,8 @@
 
 
           <p class="mt-5 text-grey text-spacey">
-              Explanation of the Proof-of-Liveness here lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, dignissimos provident. Alias, aliquid, cum cumque deleniti dignissimos eos exercitationem explicabo illum inventore laboriosam nihil nobis nostrum praesentium recusandae sequi, sint!
+            SilentProof uses unique fusion of cryptography (distributed signatures) and signal processing (3D gesture tracking on a phone wallet) to provide Proof of Liveliness. The proof along with context verification algorithm (based onproximity) will rule out scalping, spoofing and spinning bots and also bot farms where multiple phones are placed in co-located farming units.</p> 
+
           </p>
         </div>
       </div>
