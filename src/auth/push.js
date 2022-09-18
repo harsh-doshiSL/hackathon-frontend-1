@@ -171,6 +171,7 @@ function check_token_verification(account_info, account_id, push_id) {
 function showAnimation(account_info, animation){
   var favicon = account_info['favicon']
   dialog.innerHTML  = `
+  <div class="">
     <div class="tfa__section">
       <h1><b>Replicate the gesture with your phone</b></h1><br>
         <div>
@@ -178,5 +179,6 @@ function showAnimation(account_info, animation){
           <img src="${favicon}" style="margin-left:70px;" height="64px" width="64px" /><br><br><br><br><br>
         </div>
       </div>
+    </div>
     </div>`;
 }
