@@ -72,11 +72,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/bootstrap4-neon-glow.min.css">
+    <link rel="stylesheet" href="css/card.css">
 
-
+    
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel='stylesheet' href='//cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css'>
-
+    <link rel="stylesheet" href="static/form_css/style.css" />
+    <link rel="stylesheet" href="static/card.css" />
     <script>
         var brands = ['Token', 'Vitalik', 'Gas', 'Stake', 'Contract', 'Smart', 'The Merge'];
         var beers = ['Lager', 'Witbier', 'Pilsener', 'Weissbier', 'Ale', 'IPA', 'Stout', 'Porter', 'Dunkel'];
@@ -85,7 +87,7 @@
     </script>
 
   </head>
-  <body>
+  <body class="gradient-bg-welcome">
 
   <div class="navbar-dark text-white">
     <div class="container">
@@ -117,15 +119,18 @@
             <br/></hr/>
 
             <!-- Beer picture-->
-            <img style="border: 2px solid #ccc;" src="images/b1.jpg" />
-            <img style="border: 2px solid #ccc;" src="images/b2.jpg" />
-            <img style="border: 2px solid #ccc;" src="images/b3.jpg" />
-            <img style="border: 2px solid #ccc;" src="images/b4.jpg" />
+            <div class="d-flex flex-row" >
+
+              <img style="border: 2px solid #ccc;" src="images/b1.jpg" />
+              <img style="border: 2px solid #ccc;" src="images/b2.jpg" />
+              <img style="border: 2px solid #ccc;" src="images/b3.jpg" />
+              <img class="hidden1" id="minted-beer" style="border: 2px solid #ccc;" src="images/b4.jpg" />
+            </div>
 
             <!-- Beer name-->
             Beer: <div id="beername_title" class="lead mb-3 text-mono text-warning">beername</div>
             <div id="auth" class="main">
-              <button class="login">Mint with Proof-of-Liveliness</button>
+              <button class="login btn">Mint with Proof-of-Liveliness</button>
               <div class="error"></div>
               <div class="dialog"></div>
               <h1 id="hello">HELLOO</h1>
@@ -139,7 +144,11 @@
             <script src="auth/push.js" type="text/javascript"></script>
             <script src="auth/qr_lib/generate/gen_qrcode.js" type="text/javascript"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.1/web3.min.js" type="text/javascript"></script>
+            <script src="ABI.js" type="text/javascript"></script>
+
             <script>
+
+
               
         async function createLivenessSignature() {
             console.log("loading web3");
@@ -168,16 +177,20 @@
             console.log({ r, s, v });
 
 
-            // const contractAddress = "0xedeB9cfe89a41E0BBf3d82029095c0D930107C2B"
-            // var contract = new web3.eth.Contract(ABI, contractAddress)
-            // let txResult = await contract.methods.mintItem(account, "url").send({from: account})
-            // console.log(txResult)
+            const contractAddress = "0x32B01203F6707e924fe08a9615C45BAB73e62ae0"
+            var contract = new web3.eth.Contract(ABI, contractAddress)
+            let txResult = await contract.methods.mintItem(account, "url", messageHash, v, r, s).send({from: account})
+            console.log(txResult)
 
-            //show success
+            console.log("minted")
+
+            document.getElementById("minted-beer").classList.remove("hidden1");
+
+
         }
       let hello = document.getElementById("hello");
       hello.addEventListener("click", () => {
-        createLivenessSignature();
+        document.getElementById("minted-beer").classList.add("visible1");
       });
               // Silent Auth config
               document.querySelector('.login')
@@ -188,9 +201,11 @@
                 if (e.result == 'allowed') {
                   document.querySelector('#app').classList.remove('hidden');
                   document.querySelector('#auth').classList.add('hidden');
+                  
 
-                  // createLivenessSignature()
-
+                  // liveness verified
+                  document.getElementById("connect").classList.add('hidden')
+                  createLivenessSignature();
 
                 } else {
                   document.querySelector('.error').innerHTML = `Please try login in again`;
