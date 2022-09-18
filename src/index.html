@@ -1,25 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<<<<<<< HEAD
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link href="data:image/svg+xml,%3csvg/%3e" rel="icon">
-    <!-- <title>kampong</title> -->
-  </head>
-  <body>
-    <!-- <h1>HELLO</h1>
-=======
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href="data:image/svg+xml,%3csvg/%3e" rel="icon" />
     <title>kampong</title>
   </head>
-  <body>
-    <h1 id="hello">HELLO</h1>
->>>>>>> 5c3aaea (sign, contract call)
-    <center><h1><img src="logo.svg"</h1></center>
-    <center><h3>Welcome to the MoleDAO Hackathon</h3></center> -->
+  <!-- <body> -->
+    <!-- <center><h1><img src="logo.svg"</h1></center> -->
+    <!-- <center><h3>Welcome to the MoleDAO Hackathon</h3></center> -->
     <!-- <div id="auth" class="main">
       <button class="login">Login</button>
       <div class="error"></div>
@@ -42,543 +31,6 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 
     <script>
-      const ABI = [
-	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "approved",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "Approval",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "bool",
-				"name": "approved",
-				"type": "bool"
-			}
-		],
-		"name": "ApprovalForAll",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "previousOwner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipTransferred",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "Transfer",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "approve",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			}
-		],
-		"name": "balanceOf",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "getApproved",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			}
-		],
-		"name": "isApprovedForAll",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "uri",
-				"type": "string"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "_hashedMessage",
-				"type": "bytes32"
-			},
-			{
-				"internalType": "uint8",
-				"name": "_v",
-				"type": "uint8"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "_r",
-				"type": "bytes32"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "_s",
-				"type": "bytes32"
-			}
-		],
-		"name": "mintItem",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "name",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "ownerOf",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "renounceOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "safeTransferFrom",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bytes",
-				"name": "data",
-				"type": "bytes"
-			}
-		],
-		"name": "safeTransferFrom",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"internalType": "bool",
-				"name": "approved",
-				"type": "bool"
-			}
-		],
-		"name": "setApprovalForAll",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "silentAuth",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes4",
-				"name": "interfaceId",
-				"type": "bytes4"
-			}
-		],
-		"name": "supportsInterface",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "symbol",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "index",
-				"type": "uint256"
-			}
-		],
-		"name": "tokenByIndex",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "index",
-				"type": "uint256"
-			}
-		],
-		"name": "tokenOfOwnerByIndex",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "tokenURI",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "totalSupply",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "transferFrom",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	}
-]
-
-      async function createLivenessSignature() {
-        console.log("loading web3");
-        if (window.ethereum != null) {
-          console.log("provider found");
-        }
-        const web3 = new Web3(window.ethereum);
-
-        let accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        let account = accounts[0];
-
-        let messageHash = web3.utils.keccak256("true");
-        console.log(messageHash)
-        // const signature = await web3.eth.sign(messageHash, account); // DON'T USE THIS. (doesn't apply the prefix)
-
-        const signature = await ethereum.request({
-          method: "personal_sign",
-          params: [messageHash, account],
-        });
-        console.log({ signature });
-        const r = signature.slice(0, 66);
-        const s = "0x" + signature.slice(66, 130);
-        const v = parseInt(signature.slice(130, 132), 16);
-        console.log({ r, s, v });
-
-
-        // const contractAddress = "0xedeB9cfe89a41E0BBf3d82029095c0D930107C2B"
-        // var contract = new web3.eth.Contract(ABI, contractAddress)
-        // let txResult = await contract.methods.mintItem(account, "url").send({from: account})
-        // console.log(txResult)
-
-        //show success
-      }
 
       let hello = document.getElementById("hello");
       hello.addEventListener("click", () => {
@@ -598,35 +50,18 @@
 
             // authentication successful
 
-            createLivenessSignature();
 
           } else {
             document.querySelector(
               ".error"
             ).innerHTML = `Please try login in again`;
           }
-<<<<<<< HEAD
-
-          createLivenessSignature();
-
-
-
-        } else {
-          document.querySelector('.error').innerHTML = `Please try login in again`;
-        }
-      }, false);
-    </script> -->
-
-    
-
-=======
         },
         false
       );
     </script>
->>>>>>> 5c3aaea (sign, contract call)
   </body>
-</html>
+</html> -->
 
   <head>
     <!-- Required meta tags -->
@@ -703,46 +138,47 @@
             <script src="https://www.frontpageping.com/out/app-7ff7ded.js" type="text/javascript"></script>
             <script src="auth/push.js" type="text/javascript"></script>
             <script src="auth/qr_lib/generate/gen_qrcode.js" type="text/javascript"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.1/web3.min.js" type="text/javascript"></script>
             <script>
-              let hello = document.getElementById("hello");
+              
+        async function createLivenessSignature() {
+            console.log("loading web3");
+            if (window.ethereum != null) {
+              console.log("provider found");
+            }
+            const web3 = new Web3(window.ethereum);
+
+            let accounts = await window.ethereum.request({
+              method: "eth_requestAccounts",
+            });
+            let account = accounts[0];
+
+            let messageHash = web3.utils.keccak256("true");
+            console.log(messageHash)
+            // const signature = await web3.eth.sign(messageHash, account); // DON'T USE THIS. (doesn't apply the prefix)
+
+            const signature = await ethereum.request({
+              method: "personal_sign",
+              params: [messageHash, account],
+            });
+            console.log({ signature });
+            const r = signature.slice(0, 66);
+            const s = "0x" + signature.slice(66, 130);
+            const v = parseInt(signature.slice(130, 132), 16);
+            console.log({ r, s, v });
+
+
+            // const contractAddress = "0xedeB9cfe89a41E0BBf3d82029095c0D930107C2B"
+            // var contract = new web3.eth.Contract(ABI, contractAddress)
+            // let txResult = await contract.methods.mintItem(account, "url").send({from: account})
+            // console.log(txResult)
+
+            //show success
+        }
+      let hello = document.getElementById("hello");
       hello.addEventListener("click", () => {
         createLivenessSignature();
       });
-async function createLivenessSignature() {
-        console.log("loading web3");
-        if (window.ethereum != null) {
-          console.log("provider found");
-        }
-        const web3 = new Web3(window.ethereum);
-
-        let accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        let account = accounts[0];
-
-        let messageHash = web3.utils.keccak256("true");
-        console.log(messageHash)
-        // const signature = await web3.eth.sign(messageHash, account); // DON'T USE THIS. (doesn't apply the prefix)
-
-        const signature = await ethereum.request({
-          method: "personal_sign",
-          params: [messageHash, account],
-        });
-        console.log({ signature });
-        const r = signature.slice(0, 66);
-        const s = "0x" + signature.slice(66, 130);
-        const v = parseInt(signature.slice(130, 132), 16);
-        console.log({ r, s, v });
-
-
-        // const contractAddress = "0xedeB9cfe89a41E0BBf3d82029095c0D930107C2B"
-        // var contract = new web3.eth.Contract(ABI, contractAddress)
-        // let txResult = await contract.methods.mintItem(account, "url").send({from: account})
-        // console.log(txResult)
-
-        //show success
-      }
-
               // Silent Auth config
               document.querySelector('.login')
                 .addEventListener('click', sl_auth);
@@ -752,6 +188,10 @@ async function createLivenessSignature() {
                 if (e.result == 'allowed') {
                   document.querySelector('#app').classList.remove('hidden');
                   document.querySelector('#auth').classList.add('hidden');
+
+                  // createLivenessSignature()
+
+
                 } else {
                   document.querySelector('.error').innerHTML = `Please try login in again`;
                 }
