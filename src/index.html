@@ -178,8 +178,8 @@
             <!-- Beer name-->
             Beer: <div id="beername_title" class="lead mb-3 text-mono text-warning">beername</div>
             <div id="auth" class="main">
-              <button class="login btn" onclick="showModal()">Mint with Proof-of-Liveliness</button>
-              <!-- <button class="login btn">Mint with Proof-of-Liveliness</button> -->
+              <!-- <button class="login btn" onclick="showModal()">Mint with Proof-of-Liveliness</button> -->
+              <button class="login btn">Mint with Proof-of-Liveliness</button>
               <div class="error"></div>
               <div class="dialog"></div>
               <!-- <h1 id="hello">HELLOO</h1> -->
@@ -269,7 +269,7 @@
                   // liveness verified
                   document.getElementById("connect").classList.add('hidden')
                   document.getElementById("verifying-human").classList.remove('hidden')
-                  document.getElementById("qr-modal").classList.add("hidden")
+                  // document.getElementById("qr-modal").classList.add("hidden")
                   createLivenessSignature();
 
                 } else {
